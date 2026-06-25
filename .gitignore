@@ -47,4 +47,7 @@ Thumbs.db
 # Replit
 .cache/
 .local/
-.next
+.next/
+.replit-artifact/
+.vercel
+extras/
