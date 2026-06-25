@@ -1,0 +1,63 @@
+/* 
+  Case Study Design Tokens (Foundation)
+  These tokens will be used in future phases to drive the design system
+  for case study specific layouts and animations.
+*/
+
+:root {
+  /* Layout & Container */
+  --cs-max-width: 80rem; /* 1280px / max-w-7xl */
+  --cs-content-max-width: 56rem; /* 896px / max-w-4xl */
+  --cs-container-padding-x: 1.5rem;
+  --cs-container-padding-x-md: 2.5rem;
+
+  /* Grid System */
+  --cs-grid-cols: 12;
+  --cs-grid-gap: 2rem;
+
+  /* Section Spacing */
+  --cs-section-padding-y: 5rem;
+  --cs-section-padding-y-md: 6rem;
+  --cs-section-padding-y-lg: 8rem;
+  
+  /* Typography Scale (Foundation for later phases) */
+  --cs-text-hero-size: 3rem;
+  --cs-text-hero-line-height: 1.05;
+  --cs-text-hero-size-md: 4.5rem;
+
+  --cs-text-title-size: 1.875rem;
+  --cs-text-title-line-height: 1.25;
+  --cs-text-title-size-md: 2.25rem;
+
+  --cs-text-body-size: 1.125rem;
+  --cs-text-body-line-height: 1.625;
+
+  /* Radii */
+  --cs-radius-base: 12px;
+  --cs-radius-lg: 32px;
+
+  /* Shadows */
+  --cs-shadow-md: 0 8px 30px rgba(20, 20, 43, 0.06);
+  --cs-shadow-lg: 0 12px 40px rgba(20, 20, 43, 0.1);
+
+  /* Layering / Z-Index */
+  --cs-z-base: 1;
+  --cs-z-elevated: 10;
+  --cs-z-floating: 50;
+
+  /* Hover & Interaction Timings */
+  --cs-hover-duration: 300ms;
+  --cs-hover-ease: ease;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cs-section-padding-y: var(--cs-section-padding-y-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --cs-section-padding-y: var(--cs-section-padding-y-lg);
+  }
+}

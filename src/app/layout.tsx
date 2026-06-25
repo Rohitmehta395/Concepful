@@ -9,6 +9,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Conceptful",
   description: "Clarity Strategy, Narrative Development, and Brand Systems.",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +26,7 @@ export default function RootLayout({
           <Providers>
             <div className="flex min-h-screen flex-col bg-white font-sans text-[#14142B]">
               <Header />
-              <main className="flex-1 pt-[88px]">
+              <main className="flex-1 pt-[44px]">
                 {children}
               </main>
               <Footer />
