@@ -6,54 +6,20 @@ import { SectionWrapper } from "./layouts/SectionWrapper";
 import { ContentContainer } from "./layouts/ContentContainer";
 import { AnimatedCaseStudyCard } from "./card/AnimatedCaseStudyCard";
 import { CaseStudyListing } from "@/types/case-study";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+import { useStackCards } from "@/hooks/useStackCards";
 
 export function CaseStudyGrid({ projects }: { projects: CaseStudyListing[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      const cards = gsap.utils.toArray(".case-study-card") as HTMLElement[];
-      if (cards.length === 0) return;
-
-      const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      if (prefersReducedMotion) return;
-
-      cards.forEach((card, i) => {
-        if (i < cards.length - 1) {
-          const nextCard = cards[i + 1];
-          const innerCard = card.querySelector(".case-study-inner");
-
-          if (!innerCard) return;
-
-          gsap.to(innerCard, {
-            scale: 0.985,
-            ease: "none",
-            scrollTrigger: {
-              trigger: nextCard,
-              start: "top top+=496px", // Start receding 400px before overlap
-              end: "top top+=96px", // Complete receding when perfectly overlapped
-              scrub: true,
-            },
-          });
-        }
-      });
-    },
-    { scope: containerRef },
-  );
+  // Initialize the single animation controller for the entire section
+  useStackCards(containerRef);
 
   return (
     <SectionWrapper overflowHidden={false} className="py-24 lg:py-40">
       <ContentContainer size="wide">
         <div
           ref={containerRef}
-          className="flex flex-col gap-16 lg:gap-32 relative pb-32"
+          className="flex flex-col gap-[15vh] lg:gap-[30vh] relative pb-32"
         >
           {projects.map((project, index) => (
             <AnimatedCaseStudyCard

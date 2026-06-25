@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CaseStudyListing } from "@/types/case-study";
-import { useCaseStudyReveal } from "@/hooks/useCaseStudyReveal";
 
 interface CaseStudyCardProps {
   caseStudy: CaseStudyListing;
@@ -33,47 +32,23 @@ export function AnimatedCaseStudyCard({
   const isMediaLeft = index % 2 === 0;
   const colorTheme = CARD_COLORS[index % CARD_COLORS.length];
 
-  // Refs for GSAP
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLAnchorElement>(null);
-  const categoriesRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLSpanElement>(null);
-  const descRef = useRef<HTMLHeadingElement>(null);
-  const ctaRef = useRef<HTMLSpanElement>(null);
-  const dividerRef = useRef<HTMLDivElement>(null);
-  const metricsRef = useRef<HTMLDivElement>(null);
-
-  // Apply scroll animation hook
-  useCaseStudyReveal({
-    wrapper: wrapperRef,
-    card: cardRef,
-    categories: categoriesRef,
-    title: titleRef,
-    description: descRef,
-    cta: ctaRef,
-    divider: dividerRef,
-    metrics: metricsRef,
-  });
-
   const blurBackground = caseStudy.backgroundImage
     ? `url('${caseStudy.backgroundImage}')`
     : `linear-gradient(${generateLighterShade(colorTheme.bg)}, ${generateLighterShade(colorTheme.bg)})`;
 
   return (
     <div
-      ref={wrapperRef}
-      className={`case-study-card sticky top-[96px] w-full h-[95vh] lg:h-[75vh] origin-top`}
+      className="case-study-card case-study-wrapper sticky top-[96px] w-full h-[85vh] lg:h-[75vh] origin-top"
       style={{
         zIndex: index + 10,
       }}
     >
       <Link
         href={caseStudy.href}
-        ref={cardRef}
-        className={`case-study-inner block w-full h-full group ${colorTheme.text} origin-top`}
+        className={`case-study-inner block w-full h-full group ${colorTheme.text}`}
       >
         <article
-          className="relative w-full h-full flex flex-col lg:flex-row overflow-hidden transition-transform duration-300 ease-out group-hover:-translate-y-[6px] will-change-transform shadow-[0_-8px_30px_rgba(0,0,0,0.12)] origin-top"
+          className="relative w-full h-full flex flex-col lg:flex-row overflow-hidden shadow-[0_-8px_30px_rgba(0,0,0,0.12)] origin-top rounded-t-3xl lg:rounded-none"
           style={{ backgroundColor: colorTheme.bg }}
         >
           {/* Image Half */}
@@ -91,7 +66,7 @@ export function AnimatedCaseStudyCard({
               />
 
               {/* Foreground */}
-              <div className="relative z-10 w-[80%] max-w-[560px] aspect-[4/3] rounded-[8px] overflow-hidden shadow-xl transition-transform duration-[400ms] ease-out group-hover:scale-[1.03] will-change-transform">
+              <div className="case-study-image-container relative z-10 w-[80%] max-w-[560px] aspect-[4/3] rounded-[8px] overflow-hidden shadow-xl">
                 <Image
                   fill
                   src={caseStudy.heroImage}
@@ -112,18 +87,12 @@ export function AnimatedCaseStudyCard({
               {/* Title and Categories */}
               <div className="flex flex-wrap items-center gap-4 mb-6 relative z-30">
                 {caseStudy.title && (
-                  <span
-                    ref={titleRef}
-                    className="text-sm tracking-widest uppercase font-semibold opacity-0"
-                  >
+                  <span className="case-study-content-reveal text-sm tracking-widest uppercase font-semibold opacity-0">
                     {caseStudy.title}
                   </span>
                 )}
                 {caseStudy.categories && caseStudy.categories.length > 0 && (
-                  <div
-                    ref={categoriesRef}
-                    className="flex gap-4 flex-wrap opacity-0"
-                  >
+                  <div className="case-study-content-reveal flex gap-4 flex-wrap opacity-0">
                     {caseStudy.categories.map((cat, i) => (
                       <span
                         key={i}
@@ -139,18 +108,14 @@ export function AnimatedCaseStudyCard({
               {/* Description */}
               {caseStudy.description && (
                 <h2
-                  ref={descRef}
-                  className={`text-2xl md:text-3xl xl:text-4xl font-bold uppercase leading-[1.2] mb-8 relative z-30 opacity-0 ${colorTheme.text}`}
+                  className={`case-study-content-reveal text-2xl md:text-3xl xl:text-4xl font-bold uppercase leading-[1.2] mb-8 relative z-30 opacity-0 ${colorTheme.text}`}
                 >
                   {caseStudy.description}
                 </h2>
               )}
 
               {/* CTA Link */}
-              <span
-                ref={ctaRef}
-                className="inline-flex items-center gap-2 text-base font-bold uppercase tracking-wider transition-opacity opacity-0"
-              >
+              <span className="case-study-content-reveal inline-flex items-center gap-2 text-base font-bold uppercase tracking-wider opacity-0">
                 View Project
                 <svg
                   className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-[400ms] ease-out"
@@ -172,10 +137,9 @@ export function AnimatedCaseStudyCard({
             {caseStudy.metrics && caseStudy.metrics.length > 0 && (
               <div className={`w-full pt-8 relative z-30 pointer-events-none`}>
                 <div
-                  ref={dividerRef}
-                  className={`absolute top-0 left-0 w-full border-t ${colorTheme.border} origin-left scale-x-0`}
+                  className={`case-study-divider absolute top-0 left-0 w-full border-t ${colorTheme.border} origin-left scale-x-0`}
                 />
-                <div ref={metricsRef} className="grid grid-cols-2 gap-8">
+                <div className="case-study-metrics grid grid-cols-2 gap-8">
                   {caseStudy.metrics.map((metric, i) => (
                     <div key={i} className="flex flex-col gap-1 opacity-0">
                       <span className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
