@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "ConceptFul"
+version = "1.0.0"
+id = "artifacts/conceptful"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24100
+
+[services.development]
+run = "pnpm --filter @workspace/conceptful run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/conceptful", "run", "build" ]
+publicDir = "artifacts/conceptful/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24100"
+BASE_PATH = "/"

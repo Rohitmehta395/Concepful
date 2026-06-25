@@ -1,0 +1,132 @@
+Tier 1 — Clarity Sprint
+“Figure out what matters.”
+Best For
+    •    SMB
+    •    founders
+    •    early-stage firms
+Price
+$5k–12k fixed
+Deliverables
+    •    Positioning audit
+    •    Messaging architecture
+    •    Brand narrative
+    •    Strategic recommendations
+    •    Initial visual direction
+AI Usage
+Internal only.
+Do NOT expose AI as a feature yet.
+Use it to improve margins and research speed.
+
+Tier 2 — Strategic Build
+“Build the signal system.”
+Best For
+    •    growing SMBs
+    •    lower mid-market
+    •    firms needing market repositioning
+Price
+$20k–75k+
+Depends on:
+    •    stakeholders
+    •    complexity
+    •    visual system depth
+    •    web/content integration
+
+Deliverables
+Human Layer
+    •    Positioning
+    •    Identity
+    •    Narrative system
+    •    Content strategy
+    •    Executive communication alignment
+AI-Enhanced Layer
+This is where AI becomes visible.
+Examples:
+    •    custom prompt systems
+    •    internal knowledge synthesis
+    •    tone alignment workflows
+    •    editorial content acceleration
+    •    image-generation pipeline training
+    •    lightweight agent workflows
+
+Pricing Logic Here
+Still project-based.
+But now you can justify:
+    •    infrastructure fees
+    •    onboarding fees
+    •    AI configuration fees
+This is important psychologically.
+
+Tier 3 — Strategic Steering + Agentic Partner
+“Institutionalize clarity.”
+THIS is the future premium tier.
+And honestly?
+This is probably your eventual moat.
+
+Best Fit
+    •    Mid-market
+    •    advisory firms
+    •    funds
+    •    media orgs
+    •    complex operators
+
+Pricing
+Base Retainer
+$6k–20k/mo
+PLUS
+AI infrastructure fee:
+$1k–10k+/mo
+Depending on:
+    •    compute
+    •    token volume
+    •    storage/context
+    •    image generation
+    •    agent complexity
+    •    integrations
+This should NOT be bundled invisibly.
+Separate it.
+Why?
+Because:
+    •    compute scales
+    •    usage scales
+    •    clients psychologically understand “technology costs”
+
+What They’re Actually Buying
+Not “AI.”
+They’re buying:
+Institutional Memory + Signal Systems
+Huge distinction.
+
+What the Agentic Layer Could Include
+Strategic Context Engine
+AI trained on:
+    •    brand voice
+    •    positioning
+    •    market philosophy
+    •    internal docs
+    •    prior campaigns
+    •    leadership tone
+Now outputs become:
+company-native.
+
+Executive Narrative Assistant
+Helps leadership:
+    •    write
+    •    analyze
+    •    frame messaging
+    •    evaluate strategic communication
+
+Signal Scout
+AI watches:
+    •    competitors
+    •    policy
+    •    market shifts
+    •    media narratives
+Returns:
+signal summaries.
+
+Creative Direction Agent
+Can:
+    •    generate on-brand visual concepts
+    •    maintain visual consistency
+    •    accelerate campaign ideation
+Especially powerful with your future LoRA/editorial direction.
