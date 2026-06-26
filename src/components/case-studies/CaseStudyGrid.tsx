@@ -12,14 +12,15 @@ export function CaseStudyGrid({ projects }: { projects: CaseStudyListing[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Initialize the single animation controller for the entire section
-  useStackCards(containerRef);
+  // Re-run when the projects change (due to filtering)
+  useStackCards(containerRef, [projects]);
 
   return (
-    <SectionWrapper overflowHidden={false} className="py-24 lg:py-40">
+    <SectionWrapper overflowHidden={false} className="py-24 lg:py-20">
       <ContentContainer size="wide">
         <div
           ref={containerRef}
-          className="flex flex-col gap-[15vh] lg:gap-[30vh] relative pb-32"
+          className="flex flex-col gap-[15vh] lg:gap-[30vh] relative pb-10"
         >
           {projects.map((project, index) => (
             <AnimatedCaseStudyCard
@@ -31,7 +32,7 @@ export function CaseStudyGrid({ projects }: { projects: CaseStudyListing[] }) {
         </div>
 
         {/* Editorial Placeholder for future case studies */}
-        <div className="border-t border-[#14142B]/10 pt-32 mt-16 flex flex-col items-center justify-center text-center">
+        {/* <div className="border-t border-[#14142B]/10 pt-16 mt-16 flex flex-col items-center justify-center text-center">
           <h3 className="text-4xl lg:text-5xl font-bold text-[#14142B] tracking-tight mb-8">
             More work coming soon
           </h3>
@@ -42,7 +43,7 @@ export function CaseStudyGrid({ projects }: { projects: CaseStudyListing[] }) {
           <PillButton href="/contact" variant="secondary">
             Start Your Project
           </PillButton>
-        </div>
+        </div> */}
       </ContentContainer>
     </SectionWrapper>
   );

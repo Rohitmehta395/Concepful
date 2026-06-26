@@ -1,11 +1,11 @@
-import { RefObject } from "react";
+import { RefObject, DependencyList } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
+export function useStackCards(containerRef: RefObject<HTMLElement | null>, dependencies: DependencyList = []) {
   useGSAP(
     () => {
       if (!containerRef.current) return;
@@ -79,9 +79,9 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.5,
+                duration: 0.3,
                 ease: "power3.out",
-                stagger: 0.05,
+                stagger: 0.03,
               },
             );
           }
@@ -91,11 +91,11 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               { scaleX: 0 },
               {
                 scaleX: 1,
-                duration: 0.5,
+                duration: 0.3,
                 ease: "power3.out",
                 transformOrigin: "left",
               },
-              "-=0.3",
+              "-=0.2",
             );
           }
           if (metrics.length > 0) {
@@ -105,11 +105,11 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.4,
+                duration: 0.25,
                 ease: "power3.out",
-                stagger: 0.05,
+                stagger: 0.03,
               },
-              "-=0.3",
+              "-=0.2",
             );
           }
 
@@ -175,11 +175,11 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.5,
+                duration: 0.3,
                 ease: "power3.out",
-                stagger: 0.05,
+                stagger: 0.03,
               },
-              "-=0.4",
+              "-=0.3",
             );
           }
           if (divider) {
@@ -188,11 +188,11 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               { scaleX: 0 },
               {
                 scaleX: 1,
-                duration: 0.5,
+                duration: 0.3,
                 ease: "power3.out",
                 transformOrigin: "left",
               },
-              "-=0.3",
+              "-=0.2",
             );
           }
           if (metrics.length > 0) {
@@ -202,20 +202,33 @@ export function useStackCards(containerRef: RefObject<HTMLElement | null>) {
               {
                 opacity: 1,
                 y: 0,
-                duration: 0.4,
+                duration: 0.25,
                 ease: "power3.out",
-                stagger: 0.05,
+                stagger: 0.03,
               },
-              "-=0.3",
+              "-=0.2",
             );
           }
         });
       });
 
+      // Add ResizeObserver to force ScrollTrigger recalculation if the DOM layout shifts
+      // (e.g. from late image loading or fonts snapping in).
+      let resizeTimeout: NodeJS.Timeout;
+      const ro = new ResizeObserver(() => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 150);
+      });
+      ro.observe(document.body);
+
       return () => {
+        clearTimeout(resizeTimeout);
+        ro.disconnect();
         mm.revert(); // Clean up matchMedia
       };
     },
-    { scope: containerRef },
+    { scope: containerRef, dependencies: dependencies as unknown[] }
   );
 }

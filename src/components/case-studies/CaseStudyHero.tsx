@@ -7,7 +7,12 @@ import { ContentContainer } from "./layouts/ContentContainer";
 import { useHeroReveal } from "@/hooks/useHeroReveal";
 import { caseStudies } from "@/data/case-studies";
 
-export function CaseStudyHero() {
+interface CaseStudyHeroProps {
+  activeCategory: string;
+  onCategoryChange: (category: string) => void;
+}
+
+export function CaseStudyHero({ activeCategory, onCategoryChange }: CaseStudyHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -65,15 +70,19 @@ export function CaseStudyHero() {
 
           {/* Right Side: Filters */}
           <div className="flex flex-wrap lg:justify-end gap-x-6 gap-y-2 lg:max-w-xl lg:text-right lg:pt-4">
-            {filters.map((filter, i) => (
-              <button 
-                key={filter.name} 
-                className={`font-bold tracking-tight text-2xl md:text-3xl lg:text-[34px] uppercase transition-colors flex items-start ${i === 0 ? 'text-[#14142B]' : 'text-[#14142B]/30 hover:text-[#14142B]'}`}
-              >
-                {filter.name}
-                <span className="text-sm font-medium ml-1.5 mt-1">{filter.count}</span>
-              </button>
-            ))}
+            {filters.map((filter) => {
+              const isActive = activeCategory === filter.name;
+              return (
+                <button 
+                  key={filter.name} 
+                  onClick={() => onCategoryChange(filter.name)}
+                  className={`font-bold tracking-tight text-2xl md:text-3xl lg:text-[34px] uppercase transition-colors flex items-start ${isActive ? 'text-[#14142B]' : 'text-[#14142B]/30 hover:text-[#14142B]'}`}
+                >
+                  {filter.name}
+                  <span className="text-sm font-medium ml-1.5 mt-1">{filter.count}</span>
+                </button>
+              );
+            })}
           </div>
           
         </div>

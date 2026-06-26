@@ -1,13 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { SeoHead } from "@/components/site/SeoHead";
 import { PageContainer } from "@/components/case-studies/layouts/PageContainer";
 import { CaseStudyHero } from "@/components/case-studies/CaseStudyHero";
 import { CaseStudyGrid } from "@/components/case-studies/CaseStudyGrid";
 import { CaseStudyCTA } from "@/components/case-studies/CaseStudyCTA";
 import { caseStudies } from "@/data/case-studies";
+import { ServiceCategory } from "@/types/case-study";
 
 export default function CaseStudiesIndex() {
+  const [activeCategory, setActiveCategory] = useState<string>("ALL");
+
+  const filteredProjects = activeCategory === "ALL" 
+    ? caseStudies 
+    : caseStudies.filter(p => p.categories.includes(activeCategory as ServiceCategory));
+
   return (
     <>
       <SeoHead 
@@ -44,8 +52,11 @@ export default function CaseStudiesIndex() {
       </script>
 
       <PageContainer>
-        <CaseStudyHero />
-        <CaseStudyGrid projects={caseStudies} />
+        <CaseStudyHero 
+          activeCategory={activeCategory} 
+          onCategoryChange={setActiveCategory} 
+        />
+        <CaseStudyGrid projects={filteredProjects} />
         <CaseStudyCTA />
       </PageContainer>
     </>

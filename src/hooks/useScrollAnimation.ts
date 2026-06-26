@@ -16,7 +16,7 @@ export function useScrollAnimation(
     },
     {
       scope: containerRef,
-      dependencies: deps,
+      dependencies: deps as unknown[],
     }
   );
 }
