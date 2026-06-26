@@ -10,9 +10,16 @@ import { caseStudies } from "@/data/case-studies";
 interface CaseStudyHeroProps {
   activeCategory: string;
   onCategoryChange: (category: string) => void;
+  viewType: "list" | "grid";
+  onViewTypeChange: (view: "list" | "grid") => void;
 }
 
-export function CaseStudyHero({ activeCategory, onCategoryChange }: CaseStudyHeroProps) {
+export function CaseStudyHero({ 
+  activeCategory, 
+  onCategoryChange,
+  viewType,
+  onViewTypeChange
+}: CaseStudyHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
@@ -50,14 +57,28 @@ export function CaseStudyHero({ activeCategory, onCategoryChange }: CaseStudyHer
 
             <div className="flex gap-3">
               {/* List View Button */}
-              <button className="w-12 h-12 rounded-full bg-[#F5F5F0] text-[#14142B] flex items-center justify-center transition-transform hover:scale-105">
+              <button 
+                onClick={() => onViewTypeChange("list")}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-105 ${
+                  viewType === "list" 
+                    ? "bg-[#F5F5F0] text-[#14142B]" 
+                    : "bg-[#14142B]/5 text-[#14142B]/40 hover:bg-[#14142B]/10 hover:text-[#14142B]"
+                }`}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="4" y1="9" x2="20" y2="9"></line>
                   <line x1="4" y1="15" x2="20" y2="15"></line>
                 </svg>
               </button>
               {/* Grid View Button */}
-              <button className="w-12 h-12 rounded-full bg-[#14142B]/5 text-[#14142B]/40 flex items-center justify-center transition-transform hover:scale-105 hover:bg-[#14142B]/10 hover:text-[#14142B]">
+              <button 
+                onClick={() => onViewTypeChange("grid")}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-105 ${
+                  viewType === "grid" 
+                    ? "bg-[#F5F5F0] text-[#14142B]" 
+                    : "bg-[#14142B]/5 text-[#14142B]/40 hover:bg-[#14142B]/10 hover:text-[#14142B]"
+                }`}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="4" y="4" width="6" height="6" rx="1"></rect>
                   <rect x="14" y="4" width="6" height="6" rx="1"></rect>

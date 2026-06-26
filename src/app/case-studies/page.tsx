@@ -5,12 +5,14 @@ import { SeoHead } from "@/components/site/SeoHead";
 import { PageContainer } from "@/components/case-studies/layouts/PageContainer";
 import { CaseStudyHero } from "@/components/case-studies/CaseStudyHero";
 import { CaseStudyGrid } from "@/components/case-studies/CaseStudyGrid";
+import { CaseStudyGridVariant } from "@/components/case-studies/CaseStudyGridVariant";
 import { CaseStudyCTA } from "@/components/case-studies/CaseStudyCTA";
 import { caseStudies } from "@/data/case-studies";
 import { ServiceCategory } from "@/types/case-study";
 
 export default function CaseStudiesIndex() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
+  const [viewType, setViewType] = useState<"list" | "grid">("list");
 
   const filteredProjects = activeCategory === "ALL" 
     ? caseStudies 
@@ -55,8 +57,14 @@ export default function CaseStudiesIndex() {
         <CaseStudyHero 
           activeCategory={activeCategory} 
           onCategoryChange={setActiveCategory} 
+          viewType={viewType}
+          onViewTypeChange={setViewType}
         />
-        <CaseStudyGrid projects={filteredProjects} />
+        {viewType === "list" ? (
+          <CaseStudyGrid projects={filteredProjects} />
+        ) : (
+          <CaseStudyGridVariant projects={filteredProjects} />
+        )}
         <CaseStudyCTA />
       </PageContainer>
     </>
