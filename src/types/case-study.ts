@@ -166,11 +166,22 @@ export interface CaseStudyData {
   cta: CTAData;
 }
 
+export const SERVICE_CATEGORIES = [
+  "Marketing",
+  "UX",
+  "Branding",
+  "Experimental",
+  "Robotics",
+  "Automation",
+] as const;
+
+export type ServiceCategory = (typeof SERVICE_CATEGORIES)[number];
+
 export interface CaseStudyListing {
   slug: string;
   client?: string;
   title: string;
-  categories: string[];
+  categories: ServiceCategory[];
   description: string;
   href: string;
   heroImage: string;

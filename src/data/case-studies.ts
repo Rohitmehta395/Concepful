@@ -4,7 +4,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "clarity-system",
     client: "Clarity",
-    categories: ["DEVELOPMENT"],
+    categories: ["Branding", "Marketing"],
     title: "Brand System",
     description: "From scattered message to scalable brand system",
     href: "/case-studies/clarity-system",
@@ -20,7 +20,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "group-accommodation",
     client: "Group Accommodation",
-    categories: ["SOFTWARE", "WEBSITES"],
+    categories: ["UX", "Automation"],
     title: "GROUP ACCOMMODATION",
     description:
       "A LEADING GROUP TRAVEL PLATFORM, CONTINUOUSLY EVOLVING FOR SCALE",
@@ -37,7 +37,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "nova-finance",
     client: "Nova Finance",
-    categories: ["FINTECH", "WEBSITE"],
+    categories: ["UX", "Marketing"],
     title: "NOVA FINANCE",
     description:
       "A DIGITAL-FIRST LENDING PLATFORM DESIGNED FOR FASTER APPROVALS",
@@ -54,7 +54,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "pulse-health",
     client: "Pulse Health",
-    categories: ["HEALTHCARE", "PLATFORM"],
+    categories: ["Branding", "UX"],
     title: "PULSE HEALTH",
     description:
       "MODERNISING THE DIGITAL EXPERIENCE FOR PATIENTS AND PROVIDERS",
@@ -71,7 +71,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "urban-living",
     client: "Urban Living",
-    categories: ["PROPERTY", "BRANDING"],
+    categories: ["Branding", "Marketing"],
     title: "URBAN LIVING",
     description:
       "CREATING A PREMIUM DIGITAL EXPERIENCE FOR MODERN PROPERTY SALES",
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "summit-outdoors",
     client: "Summit Outdoors",
-    categories: ["ECOMMERCE", "WEBSITE"],
+    categories: ["Experimental", "UX"],
     title: "SUMMIT OUTDOORS",
     description:
       "A HIGH-PERFORMANCE ECOMMERCE PLATFORM FOR ADVENTURE ENTHUSIASTS",
@@ -105,7 +105,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "luna-education",
     client: "Luna Education",
-    categories: ["EDTECH", "SOFTWARE"],
+    categories: ["UX", "Automation"],
     title: "LUNA EDUCATION",
     description: "BUILDING A SCALABLE LEARNING PLATFORM FOR MODERN CLASSROOMS",
     href: "/case-studies/luna-education",
@@ -121,7 +121,7 @@ export const caseStudies: CaseStudyListing[] = [
   {
     slug: "atlas-logistics",
     client: "Atlas Logistics",
-    categories: ["LOGISTICS", "DASHBOARD"],
+    categories: ["Automation", "Robotics"],
     title: "ATLAS LOGISTICS",
     description:
       "STREAMLINING FLEET MANAGEMENT THROUGH REAL-TIME DATA INSIGHTS",
